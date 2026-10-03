@@ -174,6 +174,19 @@ ul {
   filter: drop-shadow(0 2px 8px rgba(12, 102, 228, 0.25));
 }
 
+.s-logo-img {
+  height: 27px;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.s-logo-img:hover {
+  opacity: 0.88;
+}
+
 .brand-solo {
   color: var(--s-blue-primary);
   font-weight: 800;
@@ -182,6 +195,41 @@ ul {
 .brand-tech {
   color: #000000;
   font-weight: 800;
+}
+
+.s-inline-logo {
+  height: 15px;
+  width: auto;
+  vertical-align: -2px;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.s-eyebrow-logo {
+  height: 13px;
+  width: auto;
+  vertical-align: -1px;
+  display: inline-block;
+  margin-left: 4px;
+  object-fit: contain;
+}
+
+.s-loc-logo {
+  height: 22px;
+  width: auto;
+  max-width: 190px;
+  display: block;
+  margin: 6px 0 4px;
+  object-fit: contain;
+}
+
+.s-footer-cr-logo {
+  height: 14px;
+  width: auto;
+  vertical-align: -2px;
+  display: inline-block;
+  margin: 0 4px;
+  object-fit: contain;
 }
 
 .s-footer-logo-wrap {
@@ -201,6 +249,15 @@ ul {
   max-width: 54px;
   object-fit: contain;
   filter: drop-shadow(0 2px 6px rgba(12, 102, 228, 0.2));
+}
+
+.s-footer-logo-img {
+  height: 29px;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 14px;
 }
 
 .s-logo-tag {
@@ -443,11 +500,11 @@ ul {
 .s-device-showcase {
   width: 100%;
   max-width: 440px;
-  background: #ffffff;
+  background: var(--s-offwhite);
   border: 1px solid var(--s-border-light);
   border-radius: 26px;
   padding: 32px;
-  box-shadow: 0 20px 45px -10px rgba(12, 102, 228, 0.1), 0 4px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 45px -10px rgba(12, 102, 228, 0.12), 0 4px 18px rgba(0, 0, 0, 0.04);
   position: relative;
 }
 
@@ -497,41 +554,113 @@ ul {
   width: 220px;
   height: 220px;
   margin: 0 auto 24px;
+  background: radial-gradient(circle at 110px 110px, rgba(12, 102, 228, 0.18) 0%, rgba(33, 137, 255, 0.08) 45%, rgba(12, 102, 228, 0.02) 70%, transparent 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .s-radar-svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
+/* High-Intensity Electric Blue Pulse Rings */
 .s-radar-ring {
   fill: none;
-  stroke: var(--s-blue-primary);
-  stroke-width: 1.5;
+  stroke: #2189ff;
+  stroke-width: 2.5;
   opacity: 0;
-  transform-origin: center;
-  animation: sRadarPing 3.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  transform-origin: 110px 110px;
+  filter: drop-shadow(0 0 8px rgba(12, 102, 228, 0.9)) drop-shadow(0 0 16px rgba(33, 137, 255, 0.7));
+  animation: sRadarPing 3.2s cubic-bezier(0.15, 0.6, 0.3, 1) infinite;
 }
 
 .s-radar-ring.r2 {
-  animation-delay: 1.1s;
+  animation-delay: 1.05s;
 }
 
 .s-radar-ring.r3 {
-  animation-delay: 2.2s;
+  animation-delay: 2.1s;
 }
 
 @keyframes sRadarPing {
   0% {
-    opacity: 0.85;
-    transform: scale(0.2);
+    opacity: 1;
+    transform: scale(0.15);
+    stroke: #38bdf8;
   }
-  80% {
-    opacity: 0;
+  60% {
+    opacity: 0.75;
+    stroke: #0c66e4;
   }
   100% {
     opacity: 0;
-    transform: scale(1);
+    transform: scale(1.05);
+    stroke: #004ecc;
+  }
+}
+
+/* High-Intensity Cellular Transmission Tower in Vivid Blue */
+.s-tower-mast {
+  stroke: #0c66e4;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(12, 102, 228, 0.6));
+}
+
+.s-tower-strut {
+  stroke: #2189ff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px rgba(33, 137, 255, 0.5));
+}
+
+.s-tower-base {
+  stroke: #0c66e4;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(12, 102, 228, 0.6));
+}
+
+/* Blinking Electric Blue Tower Beacon */
+.s-tower-beacon-glow {
+  fill: rgba(33, 137, 255, 0.35);
+  transform-origin: 110px 110px;
+  animation: sTowerHalo 1.4s ease-in-out infinite;
+}
+
+.s-tower-beacon {
+  fill: #0c66e4;
+  transform-origin: 110px 110px;
+  filter: drop-shadow(0 0 10px #0c66e4) drop-shadow(0 0 20px #2189ff);
+  animation: sTowerBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes sTowerBlink {
+  0%, 100% {
+    fill: #0c66e4;
+    filter: drop-shadow(0 0 8px #0c66e4) drop-shadow(0 0 14px #2189ff);
+    transform: scale(0.95);
+  }
+  50% {
+    fill: #60a5fa;
+    filter: drop-shadow(0 0 16px #38bdf8) drop-shadow(0 0 30px #0c66e4) drop-shadow(0 0 42px #2563eb);
+    transform: scale(1.45);
+  }
+}
+
+@keyframes sTowerHalo {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    fill: rgba(56, 189, 248, 0.65);
+    transform: scale(1.6);
   }
 }
 
@@ -542,10 +671,11 @@ ul {
 }
 
 .s-metric-box {
-  background: var(--s-offwhite);
+  background: #ffffff;
   border: 1px solid var(--s-border-light);
   border-radius: 14px;
   padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .s-metric-label {
@@ -562,6 +692,152 @@ ul {
   font-size: 15px;
   font-weight: 800;
   color: var(--s-blue-primary);
+}
+
+/* ===== NEWS CHANNEL HORIZONTAL SERVICE TICKER ===== */
+.s-news-ticker-section {
+  background: var(--s-offwhite);
+  padding: 32px 0 36px;
+  border-bottom: 1px solid var(--s-border-light);
+  border-top: 1px solid var(--s-border-light);
+  overflow: hidden;
+  position: relative;
+}
+
+.s-ticker-label-bar {
+  max-width: 1280px;
+  margin: 0 auto 20px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.s-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--s-font-head);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0c66e4;
+  background: #e8f2ff;
+  border: 1px solid #c8e0ff;
+  padding: 5px 12px;
+  border-radius: var(--s-radius-pill);
+}
+
+.s-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #0c66e4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #0c66e4;
+  animation: sLiveDotBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes sLiveDotBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.s-ticker-subtitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: -0.01em;
+}
+
+.s-ticker-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  padding: 6px 0;
+}
+
+.s-ticker-stream {
+  display: flex;
+  width: max-content;
+  user-select: none;
+}
+
+.s-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: sTickerMotion 36s linear infinite;
+  will-change: transform;
+  padding-right: 16px;
+}
+
+/* Pause when hovered so the user can easily read */
+.s-ticker-viewport:hover .s-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes sTickerMotion {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.s-ticker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--s-radius-pill);
+  padding: 10px 22px 10px 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.s-ticker-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--s-blue-border);
+  box-shadow: 0 6px 18px rgba(12, 102, 228, 0.14);
+}
+
+.s-t-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--s-blue-light);
+  color: var(--s-blue-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.s-t-code {
+  font-family: var(--s-font-head);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--s-blue-primary);
+  background: var(--s-blue-light);
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.s-t-name {
+  font-family: var(--s-font-head);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
 }
 
 /* ===== WHAT'S NEW FEATURED BANNER ===== */

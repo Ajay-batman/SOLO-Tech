@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // News Channel Horizontal Service Ticker is powered smoothly by hardware-accelerated CSS marquee animations (sTickerMotion) with pause-on-hover.
+
   // Scrollspy - Update active link on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.s-nav-link');
