@@ -1,5 +1,6 @@
 # Private Config & Secrets
 config.js
+.solo-tech.logo.jpeg
 .env
 .env.local
 .env.*.local
