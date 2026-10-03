@@ -573,8 +573,8 @@
         <!-- Form Card -->
         <div class="s-form-card">
           <form id="sContactForm" action="https://api.web3forms.com/submit" method="POST">
-            <!-- Web3Forms Access Key & Config -->
-            <input type="hidden" name="access_key" value="a2bd83e2-c84f-4e34-9ec3-f4ce307cb882">
+            <!-- Web3Forms Config (Key injected from config.js) -->
+            <input type="hidden" name="access_key" id="web3formsKey" value="">
             <input type="hidden" name="subject" value="New Inquiry from SOLO TECH Website">
             <input type="hidden" name="from_name" value="SOLO TECH Website">
             <input type="checkbox" name="botcheck" style="display: none;">
@@ -656,6 +656,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="config.js"></script>
   <script src="samsung.js" defer></script>
 </body>
 </html>

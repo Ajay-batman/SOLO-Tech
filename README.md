@@ -1,92 +1,90 @@
-# SOLO TECH — Global Mobile Testing & Device Verification Website
+# SOLO TECH
 
-A modern, high-performance website for **SOLO TECH**, a global field testing, city project deployment, and pre-launch mobile/device verification technology services company headquartered in **Chennai, Tamil Nadu, India**, with active testing support and technical resources available across **192 countries worldwide**.
-
----
-
-## 🚀 Key Highlights & Capabilities
-
-- **Global Testing & Resource Availability**: Dedicated field testing and certified on-ground technical resources available across **192 countries worldwide**.
-- **Headquarters**: Registered in **Chennai, Tamil Nadu, India**.
-- **Brand Colors**: **SOLO** in Vibrant Samsung Blue (`#0c66e4`) & **TECH** in Crisp Black (`#000000`).
-- **Samsung One UI Design System**:
-  - Executive light hero section with live telecom hardware testbed radar showcase.
-  - Interactive One UI category tab filter (`All Services`, `Device & Hardware`, `Network & RF`, `Deployments & Scale`).
-  - Signature cards with 20px rounded corners and vibrant gradient headers.
-  - 4-step progressive workflow stepper (`Scope`, `Deploy`, `Test & Log`, `Report`).
-  - 2-column operational matrix and "Why SOLO TECH" differentiator grid.
-  - Direct inquiry form and enterprise footer.
-- **Service Matrix (ST-01 to ST-09)**:
-  - `ST-01`: Field Testing (Pan-India & 192 Countries)
-  - `ST-02`: City Project Deployments
-  - `ST-03`: Pre-Launch Device Verification Suite
-  - `ST-04`: Chipset & Modem Testing
-  - `ST-05`: Network & RF Survey
-  - `ST-06`: Mobile, Wearable & IoT Testing
-  - `ST-07`: Application & Localization Testing
-  - `ST-08`: Compliance & Certification Support
-  - `ST-09`: Manpower & Deployment Support (192 Countries)
+> **Global Mobile Testing, Device Verification & Field Engineering Services**  
+> *Headquartered in Chennai, Tamil Nadu, India — Supporting Projects Across 192 Countries Worldwide.*
 
 ---
 
-## 📁 Project Structure
+## 🌐 About SOLO TECH
+
+**SOLO TECH** is a premier technology services and device verification partner specializing in pre-launch mobile device testing, field testing, network performance surveys, and on-ground technical resource deployment. 
+
+From consumer smartphones and 5G connected hardware to enterprise IoT modules and carrier network rollouts, we provide tier-1 device manufacturers, chipset vendors, and telecom operators with rigorous, real-world quality engineering.
+
+---
+
+## 🌍 Global Outreach & Capabilities
+
+> *"With a team of professionals spread across the globe — We are the ones who can arrange resources and can plan for your project – in any location, of any specifications, anytime."*
+
+- **192 Countries Worldwide**: Active field testing coverage and verified on-ground technical resources across all major telecom regions.
+- **Rapid Mobilization**: Flexible deployment models capable of dispatching local engineering teams and specialized testing hardware on short notice.
+- **Carrier & Band Versatility**: Comprehensive testing across global 2G/3G/4G/5G NR, VoLTE, VoNR, Wi-Fi 6E/7, and IoT cellular bands.
+
+---
+
+## 🛠️ Core Services & Solutions
+
+### 1. Global Field & Drive Testing
+- Live drive testing, cluster testing, and stationary benchmarking across real-world carrier networks.
+- Inter-RAT handovers, cell edge verification, blind spot identification, and roaming validation.
+
+### 2. Turnkey City Project Deployments
+- Multi-city rollout coordination and specialized on-site field testing squads.
+- Standardized test execution protocols and centralized real-time project management.
+
+### 3. Pre-Launch Device Verification Suite
+- Comprehensive carrier acceptance testing (CAT), device stability stress testing, and thermal throttling evaluations.
+- Rigorous hardware/software regression runs prior to commercial market launch.
+
+### 4. Chipset & Modem Profiling
+- Baseband diagnostic logging (QXDM, Shannon, Accuver, Keysight) and protocol stack verification.
+- 5G Sub-6GHz & mmWave throughput optimization, MIMO profiling, and carrier aggregation analysis.
+
+### 5. Network & RF Performance Surveys
+- Detailed RF field surveys, coverage mapping, and signal quality benchmarking (RSRP, RSRQ, SINR).
+- Operator cross-comparison analysis and QoS/QoE metric reporting.
+
+### 6. Mobile, Wearable & IoT Ecosystem Testing
+- End-to-end device validation across smartphones, tablets, smartwatches, telematics units, and industrial IoT sensors.
+- Cellular-to-peripheral interoperability testing (BLE, Wi-Fi, NFC, UWB).
+
+### 7. Application & Localization Testing
+- Multi-region language and localization validation.
+- Carrier bloatware verification, OS update compatibility, and regional app compliance.
+
+### 8. Compliance & Regulatory Certification Support
+- Pre-certification gap analysis for global regulatory bodies (FCC, CE, GCF, PTCRB).
+- Carrier-specific technical requirement verification and lab submission support.
+
+### 9. Technical Manpower & Resource Solutions
+- Certified field test engineers, RF technicians, and project leads available for short-term and long-term project requirements worldwide.
+
+---
+
+## 🔄 Delivery Methodology
 
 ```text
-Mobile-testing-site/
-├── index.html              # Primary Website (SOLO TECH One UI Design)
-├── samsung.html            # Mirror of Primary Design
-├── minimal-edition.html    # Archived Swiss Minimal Layout (Design 1)
-├── samsung-style.css       # Main stylesheet (Samsung One UI design system)
-├── samsung.js              # Interactive category tabs & contact form script
-├── style.css               # Design 1 stylesheet (archived)
-├── script.js               # Design 1 script (archived)
-├── assets/
-│   └── favicon.svg         # Radar icon favicon
-├── package.json            # NPM configuration & scripts
-└── README.md               # Documentation & deployment guide
+[01. Scope & Plan]  ──>  [02. Global Deployment]  ──>  [03. Execution & Logging]  ──>  [04. Analysis & Delivery]
+Specification mapping,   Dispatch certified teams       Drive runs, protocol logs,     Actionable bug matrices,
+carrier requirements,    and specialized equipment      stress tests, live network     executive reports, and
+and test matrix design.  across target regions.         performance verification.      carrier sign-off data.
 ```
 
 ---
 
-## 🛠️ How to Run Locally
+## 📞 Contact SOLO TECH
 
-### Option 1: Direct in Browser
-Double-click `index.html` to open directly in Chrome, Edge, Safari, or Firefox.
+For partnership opportunities, project inquiries, or testing resource deployment:
 
-### Option 2: Local HTTP Server (Node.js)
-```bash
-# In the project directory:
-npx serve .
-# Or run
-npm start
-```
-Then visit `http://localhost:3000` in your browser.
-
----
-
-## 📞 Official Contact Details
-
-- **Headquarters**: Chennai, Tamil Nadu, India
-- **Global Coverage**: 192 Countries Worldwide
-- **Direct Phone Numbers**:
+- **Corporate Headquarters**: Chennai, Tamil Nadu, India
+- **Global Operations**: 192 Countries Supported
+- **Direct Phone Lines**:
   - `+91 9962515538`
   - `+91 7339657793`
-- **Inquiry Email**:
-  - `solotechnologies41@gmail.com`
-- **Form Delivery**:
-  - Connected via **Web3Forms** (Access Key: `a2bd83e2-c84f-4e34-9ec3-f4ce307cb882`).
-  - Submissions land directly in `solotechnologies41@gmail.com` in real-time.
+- **Official Inquiries**:
+  - [`solotechnologies41@gmail.com`](mailto:solotechnologies41@gmail.com)
 
 ---
 
-## 🚢 Deployment
-
-### Netlify (Drag & Drop or Git)
-1. Go to [app.netlify.com](https://app.netlify.com).
-2. Drag and drop the `Mobile-testing-site` folder into the Netlify dashboard.
-3. Your site is live instantly with an SSL certificate.
-
-### GitHub Pages
-1. Push this directory to a GitHub repository.
-2. In repository settings, navigate to **Pages** -> Source: `main` branch -> `/ (root)`.
-3. Save and your site will be published at `https://<username>.github.io/<repo>/`.
+*© SOLO TECH. All rights reserved.*

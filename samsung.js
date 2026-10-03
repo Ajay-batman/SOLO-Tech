@@ -87,6 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('sContactForm');
   const toastAlert = document.getElementById('sToastAlert');
   const submitBtn = document.getElementById('sSubmitBtn');
+  const keyInput = document.getElementById('web3formsKey');
+
+  // Inject Web3Forms key from config.js if present
+  if (keyInput && typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.WEB3FORMS_KEY) {
+    keyInput.value = SITE_CONFIG.WEB3FORMS_KEY;
+  }
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -111,6 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const formData = new FormData(contactForm);
+
+      // Populate access key from SITE_CONFIG if not already set
+      if (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.WEB3FORMS_KEY) {
+        formData.set('access_key', SITE_CONFIG.WEB3FORMS_KEY);
+      }
 
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
