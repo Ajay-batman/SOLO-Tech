@@ -151,13 +151,27 @@ ul {
 .s-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--s-font-head);
   font-weight: 800;
-  font-size: 20px;
+  font-size: 21px;
   letter-spacing: -0.02em;
   color: var(--s-text-primary);
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.s-logo:hover {
+  opacity: 0.9;
+}
+
+.s-logo-icon {
+  height: 38px;
+  width: auto;
+  max-width: 68px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(12, 102, 228, 0.25));
 }
 
 .brand-solo {
@@ -170,17 +184,23 @@ ul {
   font-weight: 800;
 }
 
-.s-logo-mark {
-  width: 28px;
-  height: 28px;
-  background: var(--s-blue-primary);
-  border-radius: 8px;
+.s-footer-logo-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 800;
-  font-size: 14px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.s-footer-logo-wrap h4 {
+  margin-bottom: 0 !important;
+}
+
+.s-footer-logo-icon {
+  height: 30px;
+  width: auto;
+  max-width: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(12, 102, 228, 0.2));
 }
 
 .s-logo-tag {
