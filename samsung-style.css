@@ -41,7 +41,6 @@
   /* Typography */
   --s-font-head: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --s-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --s-font-logo: 'Orbitron', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Shadows */
   --s-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
@@ -429,11 +428,11 @@ ul {
 }
 
 .s-hero h1 {
-  font-family: var(--s-font-logo);
-  font-size: clamp(32px, 4.1vw, 54px);
+  font-family: var(--s-font-head);
+  font-size: clamp(38px, 4.6vw, 62px);
   font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: 0.01em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   margin-bottom: 22px;
   color: #000000;
 }
