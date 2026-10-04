@@ -11,10 +11,10 @@
   <link rel="icon" type="image/png" href="assets/favicon-tesla.png">
   <link rel="apple-touch-icon" href="assets/favicon-tesla.png">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & Orbitron (Logo Font) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="samsung-style.css">
@@ -97,17 +97,17 @@
 
             <div class="s-radar-area">
               <svg class="s-radar-svg" viewBox="0 0 220 220">
-                <!-- Concentric Guide Rings with Vivid Blue Tint -->
-                <circle cx="110" cy="110" r="100" fill="none" stroke="rgba(12, 102, 228, 0.2)" stroke-width="1.2" stroke-dasharray="3 3"/>
-                <circle cx="110" cy="110" r="65" fill="none" stroke="rgba(12, 102, 228, 0.26)" stroke-width="1.2"/>
-                <circle cx="110" cy="110" r="30" fill="none" stroke="rgba(12, 102, 228, 0.35)" stroke-width="1.2"/>
+                <!-- Concentric Guide Rings in Luminous White -->
+                <circle cx="110" cy="110" r="100" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <circle cx="110" cy="110" r="65" fill="none" stroke="rgba(255, 255, 255, 0.35)" stroke-width="1.2"/>
+                <circle cx="110" cy="110" r="30" fill="none" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1.2"/>
 
-                <!-- High-Intensity Electric Blue Radar Wave Pulses -->
+                <!-- Luminous White Radar Wave Pulses / Vibration -->
                 <circle class="s-radar-ring" cx="110" cy="110" r="95"/>
                 <circle class="s-radar-ring r2" cx="110" cy="110" r="95"/>
                 <circle class="s-radar-ring r3" cx="110" cy="110" r="95"/>
 
-                <!-- Cellular Transmission Tower Structure in Electric Samsung Blue -->
+                <!-- Cellular Transmission Tower Structure in Crisp White -->
                 <line x1="86" y1="180" x2="134" y2="180" class="s-tower-base"/>
                 <line x1="110" y1="110" x2="92" y2="180" class="s-tower-mast"/>
                 <line x1="110" y1="110" x2="128" y2="180" class="s-tower-mast"/>
@@ -119,7 +119,7 @@
                 <line x1="95" y1="172" x2="125" y2="152" class="s-tower-strut"/>
                 <line x1="95" y1="152" x2="125" y2="172" class="s-tower-strut"/>
 
-                <!-- Blinking High-Intensity Blue Tower Beacon Light -->
+                <!-- Blinking Luminous White Tower Beacon Light -->
                 <circle class="s-tower-beacon-glow" cx="110" cy="110" r="15"/>
                 <circle class="s-tower-beacon" cx="110" cy="110" r="7"/>
               </svg>
@@ -739,8 +739,8 @@
         <!-- Form Card -->
         <div class="s-form-card">
           <form id="sContactForm" action="https://api.web3forms.com/submit" method="POST">
-            <!-- Web3Forms Config (Key injected from config.js) -->
-            <input type="hidden" name="access_key" id="web3formsKey" value="">
+            <!-- Web3Forms Access Key & Config -->
+            <input type="hidden" name="access_key" id="web3formsKey" value="a2bd83e2-c84f-4e34-9ec3-f4ce307cb882">
             <input type="hidden" name="subject" value="New Inquiry from SOLO TECH Website">
             <input type="hidden" name="from_name" value="SOLO TECH Website">
             <input type="checkbox" name="botcheck" style="display: none;">

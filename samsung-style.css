@@ -41,6 +41,7 @@
   /* Typography */
   --s-font-head: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --s-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --s-font-logo: 'Orbitron', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Shadows */
   --s-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
@@ -428,11 +429,11 @@ ul {
 }
 
 .s-hero h1 {
-  font-family: var(--s-font-head);
-  font-size: clamp(38px, 4.6vw, 62px);
+  font-family: var(--s-font-logo);
+  font-size: clamp(32px, 4.1vw, 54px);
   font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.18;
+  letter-spacing: 0.01em;
   margin-bottom: 22px;
   color: #000000;
 }
@@ -500,11 +501,11 @@ ul {
 .s-device-showcase {
   width: 100%;
   max-width: 440px;
-  background: var(--s-offwhite);
-  border: 1px solid var(--s-border-light);
+  background: linear-gradient(150deg, #38bdf8 0%, #0ea5e9 45%, #0284c7 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 26px;
   padding: 32px;
-  box-shadow: 0 20px 45px -10px rgba(12, 102, 228, 0.12), 0 4px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 45px -10px rgba(14, 165, 233, 0.38), 0 6px 20px rgba(2, 132, 199, 0.2);
   position: relative;
 }
 
@@ -513,7 +514,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--s-border-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding-bottom: 16px;
 }
 
@@ -521,7 +522,7 @@ ul {
   font-family: var(--s-font-head);
   font-size: 13.5px;
   font-weight: 800;
-  color: #000000;
+  color: #ffffff;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   display: flex;
@@ -534,18 +535,20 @@ ul {
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #059669;
+  color: #ffffff;
   font-weight: 700;
-  background: #ecfdf5;
+  background: rgba(255, 255, 255, 0.2);
   padding: 4px 10px;
   border-radius: var(--s-radius-pill);
-  border: 1px solid #a7f3d0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
 }
 
 .s-status-dot {
   width: 7px;
   height: 7px;
-  background: #059669;
+  background: #a7f3d0;
+  box-shadow: 0 0 8px #34d399;
   border-radius: 50%;
 }
 
@@ -554,7 +557,7 @@ ul {
   width: 220px;
   height: 220px;
   margin: 0 auto 24px;
-  background: radial-gradient(circle at 110px 110px, rgba(12, 102, 228, 0.18) 0%, rgba(33, 137, 255, 0.08) 45%, rgba(12, 102, 228, 0.02) 70%, transparent 100%);
+  background: radial-gradient(circle at 110px 110px, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.02) 70%, transparent 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -567,14 +570,14 @@ ul {
   overflow: visible;
 }
 
-/* High-Intensity Electric Blue Pulse Rings */
+/* White Vibration / Radar Wave Pulses */
 .s-radar-ring {
   fill: none;
-  stroke: #2189ff;
+  stroke: #ffffff;
   stroke-width: 2.5;
   opacity: 0;
   transform-origin: 110px 110px;
-  filter: drop-shadow(0 0 8px rgba(12, 102, 228, 0.9)) drop-shadow(0 0 16px rgba(33, 137, 255, 0.7));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.7));
   animation: sRadarPing 3.2s cubic-bezier(0.15, 0.6, 0.3, 1) infinite;
 }
 
@@ -590,76 +593,76 @@ ul {
   0% {
     opacity: 1;
     transform: scale(0.15);
-    stroke: #38bdf8;
+    stroke: #ffffff;
   }
   60% {
-    opacity: 0.75;
-    stroke: #0c66e4;
+    opacity: 0.85;
+    stroke: #ffffff;
   }
   100% {
     opacity: 0;
     transform: scale(1.05);
-    stroke: #004ecc;
+    stroke: rgba(255, 255, 255, 0.2);
   }
 }
 
-/* High-Intensity Cellular Transmission Tower in Vivid Blue */
+/* White Cellular Transmission Tower */
 .s-tower-mast {
-  stroke: #0c66e4;
+  stroke: #ffffff;
   stroke-width: 2.8;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 4px rgba(12, 102, 228, 0.6));
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
 }
 
 .s-tower-strut {
-  stroke: #2189ff;
+  stroke: #ffffff;
   stroke-width: 1.8;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 3px rgba(33, 137, 255, 0.5));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
 }
 
 .s-tower-base {
-  stroke: #0c66e4;
+  stroke: #ffffff;
   stroke-width: 2.6;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 4px rgba(12, 102, 228, 0.6));
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
 }
 
-/* Blinking Electric Blue Tower Beacon */
+/* Blinking White Tower Beacon */
 .s-tower-beacon-glow {
-  fill: rgba(33, 137, 255, 0.35);
+  fill: rgba(255, 255, 255, 0.45);
   transform-origin: 110px 110px;
   animation: sTowerHalo 1.4s ease-in-out infinite;
 }
 
 .s-tower-beacon {
-  fill: #0c66e4;
+  fill: #ffffff;
   transform-origin: 110px 110px;
-  filter: drop-shadow(0 0 10px #0c66e4) drop-shadow(0 0 20px #2189ff);
+  filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 22px rgba(255, 255, 255, 0.95));
   animation: sTowerBlink 1.4s ease-in-out infinite;
 }
 
 @keyframes sTowerBlink {
   0%, 100% {
-    fill: #0c66e4;
-    filter: drop-shadow(0 0 8px #0c66e4) drop-shadow(0 0 14px #2189ff);
+    fill: #ffffff;
+    filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 14px rgba(255, 255, 255, 0.8));
     transform: scale(0.95);
   }
   50% {
-    fill: #60a5fa;
-    filter: drop-shadow(0 0 16px #38bdf8) drop-shadow(0 0 30px #0c66e4) drop-shadow(0 0 42px #2563eb);
+    fill: #ffffff;
+    filter: drop-shadow(0 0 18px #ffffff) drop-shadow(0 0 32px #ffffff) drop-shadow(0 0 44px rgba(255, 255, 255, 0.95));
     transform: scale(1.45);
   }
 }
 
 @keyframes sTowerHalo {
   0%, 100% {
-    opacity: 0.25;
+    opacity: 0.3;
     transform: scale(0.8);
   }
   50% {
     opacity: 0.95;
-    fill: rgba(56, 189, 248, 0.65);
+    fill: rgba(255, 255, 255, 0.75);
     transform: scale(1.6);
   }
 }
@@ -672,15 +675,15 @@ ul {
 
 .s-metric-box {
   background: #ffffff;
-  border: 1px solid var(--s-border-light);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 14px;
   padding: 12px 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .s-metric-label {
   font-size: 11px;
-  color: var(--s-text-muted);
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 600;
@@ -691,7 +694,7 @@ ul {
   font-family: var(--s-font-head);
   font-size: 15px;
   font-weight: 800;
-  color: var(--s-blue-primary);
+  color: #0284c7;
 }
 
 /* ===== NEWS CHANNEL HORIZONTAL SERVICE TICKER ===== */
