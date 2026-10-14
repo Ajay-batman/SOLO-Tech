@@ -489,12 +489,52 @@ ul {
   background: var(--s-blue-primary);
 }
 
-/* Radar & Hardware Visual (Clean One UI Precision Lab Card) */
+/* Radar & Hardware Visual (Clean One UI Precision Lab Column) */
 .s-hero-visual {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ===== ISOMETRIC MOBILE & UI/UX (Lottie SVG Animation) ===== */
+.s-mobile-lottie-wrap {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  animation: sMobileCardFloat 5s ease-in-out infinite;
+}
+
+.s-mobile-lottie-svg {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(12, 102, 228, 0.12));
+  transition: transform 0.4s ease;
+}
+
+.s-mobile-lottie-wrap:hover .s-mobile-lottie-svg {
+  transform: scale(1.025);
+}
+
+/* Floating Subtle Breathing */
+@keyframes sMobileCardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .s-device-showcase {
@@ -503,7 +543,7 @@ ul {
   background: linear-gradient(150deg, #38bdf8 0%, #0ea5e9 45%, #0284c7 100%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 26px;
-  padding: 32px;
+  padding: 24px 26px;
   box-shadow: 0 20px 45px -10px rgba(14, 165, 233, 0.38), 0 6px 20px rgba(2, 132, 199, 0.2);
   position: relative;
 }
@@ -512,9 +552,9 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding-bottom: 16px;
+  padding-bottom: 14px;
 }
 
 .s-device-title {
@@ -553,9 +593,9 @@ ul {
 
 .s-radar-area {
   position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 24px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 16px;
   background: radial-gradient(circle at 110px 110px, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.02) 70%, transparent 100%);
   border-radius: 50%;
   display: flex;
@@ -1714,6 +1754,10 @@ ul {
 }
 
 @media (max-width: 600px) {
+  .s-mobile-lottie-svg {
+    max-height: 200px;
+  }
+
   .s-cards-grid,
   .s-stepper-grid {
     grid-template-columns: 1fr;
