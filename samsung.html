@@ -86,11 +86,53 @@
         </div>
 
         <!-- Radar & Hardware Visual (Samsung Visual Style) -->
-        <div class="s-hero-visual" aria-hidden="true">
+        <div class="s-hero-visual">
 
-          <!-- Isometric UI/UX & Mobile Verification (Lottie Animated SVG) -->
-          <div class="s-mobile-lottie-wrap">
-            <img src="assets/isometric-uiux-animation.svg" alt="Isometric UI/UX & Mobile Verification Animation" class="s-mobile-lottie-svg" width="994" height="738">
+          <!-- INTERACTIVE MULTI-DEVICE TEST SUITE (Mobile · Tablet · Buds) -->
+          <div class="s-device-projector-card">
+            <!-- Device Switcher Tabs -->
+            <div class="s-device-tabs" role="tablist" aria-label="Device Test Suite Form Factors">
+              <button type="button" class="s-device-tab active" data-device="mobile" role="tab" aria-selected="true" id="tab-mobile" aria-controls="panel-device">
+                <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span>Mobile</span>
+              </button>
+              <button type="button" class="s-device-tab" data-device="tablet" role="tab" aria-selected="false" id="tab-tablet" aria-controls="panel-device">
+                <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" ry="2"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Tablet</span>
+              </button>
+              <button type="button" class="s-device-tab" data-device="buds" role="tab" aria-selected="false" id="tab-buds" aria-controls="panel-device">
+                <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+                <span>Buds</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Projection Stage -->
+            <div class="s-device-stage device-mobile" id="panel-device" role="tabpanel" aria-labelledby="tab-mobile">
+              <div class="s-device-stage-inner">
+                <!-- Mobile Showcase (Isometric Lottie Animation) -->
+                <div class="s-device-media s-media-mobile is-active" id="media-mobile">
+                  <img src="assets/isometric-uiux-animation.svg" alt="Active Smartphone Verification Animation" class="s-device-lottie-svg" width="994" height="738">
+                </div>
+
+                <!-- Tablet Showcase (Tablet Vertical & Horizontal Animation) -->
+                <div class="s-device-media s-media-tablet" id="media-tablet">
+                  <img src="assets/TABLET Vertical And Horizontal.svg" alt="Active Tablet Verification Animation" class="s-device-lottie-svg" width="1920" height="1080">
+                </div>
+
+                <!-- Earbuds Showcase (Audio & Wearable Verification Animation) -->
+                <div class="s-device-media s-media-buds" id="media-buds">
+                  <img src="assets/callcenter.svg" alt="Active Earbuds & Wearables Verification Animation" class="s-device-lottie-svg" width="500" height="500">
+                </div>
+              </div>
+
+              <!-- Device Label Badge -->
+              <div class="s-device-meta">
+                <span class="s-device-meta-pill">
+                  <span class="s-pulse-dot"></span>
+                  <span id="deviceTypeLabel">Mobile</span>
+                </span>
+              </div>
+            </div>
           </div>
 
           <!-- Telecom Test Bed (Global Fleet) -->

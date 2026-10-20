@@ -500,31 +500,233 @@ ul {
   width: 100%;
 }
 
-/* ===== ISOMETRIC MOBILE & UI/UX (Lottie SVG Animation) ===== */
-.s-mobile-lottie-wrap {
+/* ===== INTERACTIVE HERO DEVICE PROJECTOR (Mobile · Tablet · Buds) ===== */
+.s-device-projector-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Device Switcher Tab Bar */
+.s-device-tabs {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 102, 228, 0.06);
+  border: 1px solid rgba(12, 102, 228, 0.14);
+  padding: 4px;
+  border-radius: 999px;
+  gap: 4px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(12, 102, 228, 0.05);
+}
+
+.s-device-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  color: var(--s-text-muted);
+  font-family: var(--s-font-head);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.s-tab-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.s-device-tab:hover {
+  color: var(--s-blue-primary);
+  background: rgba(12, 102, 228, 0.08);
+}
+
+.s-device-tab.active {
+  background: var(--s-blue-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(12, 102, 228, 0.32);
+}
+
+.s-device-tab.active .s-tab-icon {
+  transform: scale(1.1);
+}
+
+/* Dynamic Projection Stage */
+.s-device-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   background: transparent;
   animation: sMobileCardFloat 5s ease-in-out infinite;
+  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.s-mobile-lottie-svg {
+/* Form-Factor Sizing Proportions */
+.s-device-stage.device-mobile {
+  max-width: 380px;
+}
+
+.s-device-stage.device-tablet {
+  max-width: 480px;
+}
+
+.s-device-stage.device-buds {
+  max-width: 320px;
+}
+
+/* Inner SVG Stage Wrapper with proportional scaling */
+.s-device-stage-inner {
   width: 100%;
-  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual Device Media Panels with Erase-In Animation */
+.s-device-media {
+  display: none;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  will-change: clip-path, opacity, transform;
+}
+
+.s-device-media.is-active {
+  display: flex;
+  animation: sEraseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Erase-In Sweep / Unclip Keyframes */
+@keyframes sEraseIn {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0 round 8px);
+    transform: scale(0.96) translateX(12px);
+    filter: blur(4px);
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 8px);
+    transform: scale(1) translateX(0);
+    filter: blur(0);
+  }
+}
+
+.s-buds-video {
+  mix-blend-mode: multiply;
+  max-height: 200px;
+  border-radius: 16px;
+}
+
+.s-device-stage.device-mobile .s-device-stage-inner {
+  transform: scale(1);
+}
+
+.s-device-stage.device-tablet .s-device-stage-inner {
+  transform: scale(1.06);
+}
+
+.s-device-stage.device-buds .s-device-stage-inner {
+  transform: scale(0.92);
+}
+
+.s-device-lottie-svg {
+  width: 100%;
   height: auto;
-  max-height: 280px;
+  max-height: 250px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 10px 24px rgba(12, 102, 228, 0.12));
-  transition: transform 0.4s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease;
 }
 
-.s-mobile-lottie-wrap:hover .s-mobile-lottie-svg {
-  transform: scale(1.025);
+.s-device-stage.device-tablet .s-device-lottie-svg {
+  max-height: 280px;
+}
+
+.s-device-stage.device-buds .s-device-lottie-svg {
+  max-height: 205px;
+}
+
+.s-device-projector-card:hover .s-device-lottie-svg {
+  transform: scale(1.02);
+}
+
+/* Telemetry Badges below the device projection */
+.s-device-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.s-device-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(12, 102, 228, 0.08);
+  border: 1px solid rgba(12, 102, 228, 0.18);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--s-font-head);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--s-blue-primary);
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
+}
+
+.s-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--s-blue-primary);
+  box-shadow: 0 0 8px var(--s-blue-primary);
+  animation: sLiveDotPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sLiveDotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.s-device-meta-metric {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--s-text-muted);
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
 }
 
 /* Floating Subtle Breathing */
@@ -1754,8 +1956,14 @@ ul {
 }
 
 @media (max-width: 600px) {
-  .s-mobile-lottie-svg {
+  .s-device-lottie-svg {
+    max-height: 180px;
+  }
+  .s-device-stage.device-tablet .s-device-lottie-svg {
     max-height: 200px;
+  }
+  .s-device-stage.device-buds .s-device-lottie-svg {
+    max-height: 155px;
   }
 
   .s-cards-grid,

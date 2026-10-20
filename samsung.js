@@ -161,4 +161,113 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Interactive Hero Device Tabs Switcher with Auto-Cycling (Mobile · Tablet · Buds)
+  const deviceTabs = document.querySelectorAll('.s-device-tab');
+  const deviceStage = document.getElementById('panel-device');
+  const deviceTypeLabel = document.getElementById('deviceTypeLabel');
+  const deviceMetricLabel = document.getElementById('deviceMetricLabel');
+
+  const deviceOrder = ['mobile', 'tablet', 'buds'];
+  const deviceData = {
+    mobile: {
+      type: 'Mobile',
+      duration: 6000 // 6.0s SMIL animation cycle
+    },
+    tablet: {
+      type: 'Tablet',
+      duration: 6033 // 6.033s SMIL animation cycle
+    },
+    buds: {
+      type: 'Earbuds',
+      duration: 4638 // 4.638s SMIL animation cycle
+    }
+  };
+
+  if (deviceTabs.length && deviceStage) {
+    let currentDeviceIndex = 0;
+    let autoSwitchTimer = null;
+    let isHovered = false;
+
+    function switchDevice(device, isManual = false) {
+      if (!device || !deviceData[device]) return;
+      currentDeviceIndex = deviceOrder.indexOf(device);
+
+      // Update active tab button state
+      deviceTabs.forEach(btn => {
+        const isActive = btn.getAttribute('data-device') === device;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Update stage form-factor class
+      deviceStage.classList.remove('device-mobile', 'device-tablet', 'device-buds');
+      deviceStage.classList.add(`device-${device}`);
+
+      // Update active media panel with erase-in transition
+      const allMedia = deviceStage.querySelectorAll('.s-device-media');
+      allMedia.forEach(m => m.classList.remove('is-active'));
+      const targetMedia = document.getElementById(`media-${device}`);
+      if (targetMedia) {
+        void targetMedia.offsetWidth; // Force reflow to restart erase-in animation
+        targetMedia.classList.add('is-active');
+        const video = targetMedia.querySelector('video');
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      }
+
+      // Update device label badge with subtle fade
+      if (deviceTypeLabel) {
+        const pill = deviceTypeLabel.closest('.s-device-meta-pill') || deviceTypeLabel;
+        pill.style.opacity = '0';
+
+        setTimeout(() => {
+          deviceTypeLabel.textContent = deviceData[device].type;
+          pill.style.opacity = '1';
+        }, 150);
+      }
+
+      // Schedule next automatic switch after this animation completes its cycle
+      scheduleNextSwitch();
+    }
+
+    function scheduleNextSwitch() {
+      clearTimeout(autoSwitchTimer);
+      if (isHovered) return; // Pause when user is inspecting
+
+      const currentDevice = deviceOrder[currentDeviceIndex];
+      const duration = deviceData[currentDevice]?.duration || 5500;
+
+      autoSwitchTimer = setTimeout(() => {
+        const nextIndex = (currentDeviceIndex + 1) % deviceOrder.length;
+        switchDevice(deviceOrder[nextIndex]);
+      }, duration);
+    }
+
+    // Manual tab click handling
+    deviceTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const device = tab.getAttribute('data-device');
+        switchDevice(device, true);
+      });
+    });
+
+    // Pause on hover so the user can inspect, resume on leave
+    const projectorCard = document.querySelector('.s-device-projector-card');
+    if (projectorCard) {
+      projectorCard.addEventListener('mouseenter', () => {
+        isHovered = true;
+        clearTimeout(autoSwitchTimer);
+      });
+      projectorCard.addEventListener('mouseleave', () => {
+        isHovered = false;
+        scheduleNextSwitch();
+      });
+    }
+
+    // Start auto-cycling initial timer
+    scheduleNextSwitch();
+  }
 });
