@@ -88,59 +88,136 @@
         <!-- Radar & Hardware Visual (Samsung Visual Style) -->
         <div class="s-hero-visual">
 
-          <!-- INTERACTIVE MULTI-DEVICE TEST SUITE (Mobile · Tablet · Buds) -->
-          <div class="s-device-projector-card">
+          <!-- INTERACTIVE MULTI-DEVICE 3D ORBIT TEST SUITE -->
+          <div class="s-device-projector-card" id="projectorCard">
             <!-- Device Switcher Tabs -->
-            <div class="s-device-tabs" role="tablist" aria-label="Device Test Suite Form Factors">
-              <button type="button" class="s-device-tab active" data-device="mobile" role="tab" aria-selected="true" id="tab-mobile" aria-controls="panel-device">
+            <div class="s-device-tabs" role="tablist" aria-label="Device Form Factors">
+              <button type="button" class="s-device-tab active" data-index="0" data-device="mobile" role="tab" aria-selected="true" id="tab-mobile">
                 <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 <span>Mobile</span>
               </button>
-              <button type="button" class="s-device-tab" data-device="tablet" role="tab" aria-selected="false" id="tab-tablet" aria-controls="panel-device">
+              <button type="button" class="s-device-tab" data-index="1" data-device="tablet" role="tab" aria-selected="false" id="tab-tablet">
                 <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2" ry="2"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 <span>Tablet</span>
               </button>
-              <button type="button" class="s-device-tab" data-device="buds" role="tab" aria-selected="false" id="tab-buds" aria-controls="panel-device">
+              <button type="button" class="s-device-tab" data-index="2" data-device="buds" role="tab" aria-selected="false" id="tab-buds">
                 <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
                 <span>Buds</span>
               </button>
-              <button type="button" class="s-device-tab" data-device="watch" role="tab" aria-selected="false" id="tab-watch" aria-controls="panel-device">
+              <button type="button" class="s-device-tab" data-index="3" data-device="watch" role="tab" aria-selected="false" id="tab-watch">
                 <svg class="s-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="3"/><polyline points="12 9 12 12 14 14"/><path d="M9 6V2h6v4"/><path d="M9 18v4h6v-4"/></svg>
                 <span>Watch</span>
               </button>
             </div>
 
-            <!-- Dynamic Projection Stage -->
-            <div class="s-device-stage device-mobile" id="panel-device" role="tabpanel" aria-labelledby="tab-mobile">
-              <div class="s-device-stage-inner">
-                <!-- Mobile Showcase (Smartphone Verification) -->
-                <div class="s-device-media s-media-mobile is-active" id="media-mobile">
-                  <img src="assets/Mobile.hero.jpeg" alt="Active Smartphone Verification Showcase" class="s-device-hero-img" width="1280" height="853">
-                </div>
+            <!-- 3D Orbit Stage -->
+            <div class="s-orbit-stage" id="orbitStage">
+              <div class="s-orbit-container" id="orbitContainer" aria-label="Interactive 3D Device Showcase Carousel">
+                
+                <!-- Card 1: Smartphone (Mobile Form Factor) -->
+                <article class="s-3d-card s-card-mobile" tabindex="0" data-index="0" data-device="mobile" aria-label="Samsung Galaxy S24 Ultra Test Suite">
+                  <div class="s-card-cover">
+                    <div class="s-card-header">
+                      <div class="s-card-brand-meta">
+                        <span class="s-card-tag"> Mobile </span>
+                        <h3 class="s-card-model">   </h3>
+                      </div>
+                      <span class="s-card-edition">01 / 04</span>
+                    </div>
 
-                <!-- Tablet Showcase (Tablet Verification) -->
-                <div class="s-device-media s-media-tablet" id="media-tablet">
-                  <img src="assets/Tablet.hero.jpeg" alt="Active Tablet Verification Showcase" class="s-device-hero-img" width="1000" height="1000">
-                </div>
+                    <div class="s-card-visual">
+                      <img src="assets/device/Mobile.png" alt="Samsung Galaxy S24 Ultra" class="s-card-device-img" width="400" height="500">
+                      <div class="s-card-glow-core"></div>
+                    </div>
 
-                <!-- Earbuds Showcase (Earbuds & Audio Verification) -->
-                <div class="s-device-media s-media-buds" id="media-buds">
-                  <img src="assets/earbuds.hero.jpeg" alt="Active Earbuds Verification Showcase" class="s-device-hero-img" width="1024" height="1024">
-                </div>
+                    <div class="s-card-footer">
+                      <div class="s-card-spec">
+                        <span class="s-card-spec-key">  </span>
+                        <span class="s-card-spec-val">  </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
 
-                <!-- Smartwatch Showcase (Wearable & Health Verification) -->
-                <div class="s-device-media s-media-watch" id="media-watch">
-                  <img src="assets/watch.hero.jpeg" alt="Active Smartwatch Verification Showcase" class="s-device-hero-img" width="1536" height="1024">
-                </div>
+                <!-- Card 2: Tablet (Widescreen Slate Form Factor) -->
+                <article class="s-3d-card s-card-tablet" tabindex="0" data-index="1" data-device="tablet" aria-label="Samsung Galaxy Tab S9 Ultra Test Suite">
+                  <div class="s-card-cover">
+                    <div class="s-card-header">
+                      <div class="s-card-brand-meta">
+                        <span class="s-card-tag"> Tablet </span>
+                        <h3 class="s-card-model">   </h3>
+                      </div>
+                      <span class="s-card-edition">02 / 04</span>
+                    </div>
+
+                    <div class="s-card-visual">
+                      <img src="assets/device/Tablet.png" alt="Samsung Galaxy Tab S9 Ultra" class="s-card-device-img" width="400" height="500">
+                      <div class="s-card-glow-core"></div>
+                    </div>
+
+                    <div class="s-card-footer">
+                      <div class="s-card-spec">
+                        <span class="s-card-spec-key">  </span>
+                        <span class="s-card-spec-val">  </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 3: Earbuds (Compact Pebble Form Factor) -->
+                <article class="s-3d-card s-card-buds" tabindex="0" data-index="2" data-device="buds" aria-label="Samsung Galaxy Buds2 Pro Test Suite">
+                  <div class="s-card-cover">
+                    <div class="s-card-header">
+                      <div class="s-card-brand-meta">
+                        <span class="s-card-tag">Earbuds</span>
+                        <h3 class="s-card-model">  </h3>
+                      </div>
+                      <span class="s-card-edition">03 / 04</span>
+                    </div>
+
+                    <div class="s-card-visual">
+                      <img src="assets/device/earbuds.png" alt="Samsung Galaxy Buds2 Pro" class="s-card-device-img" width="400" height="500">
+                      <div class="s-card-glow-core"></div>
+                    </div>
+
+                    <div class="s-card-footer">
+                      <div class="s-card-spec">
+                        <span class="s-card-spec-key">  </span>
+                        <span class="s-card-spec-val">  </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 4: Watch (Wearable Wrist Gear Form Factor) -->
+                <article class="s-3d-card s-card-watch" tabindex="0" data-index="3" data-device="watch" aria-label="Samsung Galaxy Watch6 Classic Test Suite">
+                  <div class="s-card-cover">
+                    <div class="s-card-header">
+                      <div class="s-card-brand-meta">
+                        <span class="s-card-tag"> Watch </span>
+                        <h3 class="s-card-model">   </h3>
+                      </div>
+                      <span class="s-card-edition">04 / 04</span>
+                    </div>
+
+                    <div class="s-card-visual">
+                      <img src="assets/device/watch.png" alt="Samsung Galaxy Watch6 Classic" class="s-card-device-img" width="400" height="500">
+                      <div class="s-card-glow-core"></div>
+                    </div>
+
+                    <div class="s-card-footer">
+                      <div class="s-card-spec">
+                        <span class="s-card-spec-key"> </span>
+                        <span class="s-card-spec-val">   </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
               </div>
 
-              <!-- Device Label Badge -->
-              <div class="s-device-meta">
-                <span class="s-device-meta-pill">
-                  <span class="s-pulse-dot"></span>
-                  <span id="deviceTypeLabel">Mobile</span>
-                </span>
-              </div>
+              <!-- Ambient Neon Floor Reflection -->
+              <div class="s-orbit-reflection" id="orbitReflection"></div>
             </div>
           </div>
 
