@@ -162,100 +162,232 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Interactive Hero Device Tabs Switcher with Auto-Cycling (Mobile · Tablet · Buds)
+  // ===== 3D ORBIT DEVICE SHOWCASE CONTROLLER (Mobile · Tablet · Buds · Watch) =====
+  const orbitContainer = document.getElementById('orbitContainer');
+  const orbitCards = orbitContainer ? [...orbitContainer.querySelectorAll('.s-3d-card')] : [];
+  const orbitPrev = document.getElementById('orbitPrev');
+  const orbitNext = document.getElementById('orbitNext');
+  const orbitCount = document.getElementById('orbitCount');
+  const orbitReflection = document.getElementById('orbitReflection');
   const deviceTabs = document.querySelectorAll('.s-device-tab');
-  const deviceStage = document.getElementById('panel-device');
-  const deviceTypeLabel = document.getElementById('deviceTypeLabel');
-  const deviceMetricLabel = document.getElementById('deviceMetricLabel');
+  const projectorCard = document.querySelector('.s-device-projector-card');
 
-  const deviceOrder = ['mobile', 'tablet', 'buds'];
-  const deviceData = {
-    mobile: {
-      type: 'Mobile',
-      duration: 6000 // 6.0s SMIL animation cycle
-    },
-    tablet: {
-      type: 'Tablet',
-      duration: 6033 // 6.033s SMIL animation cycle
-    },
-    buds: {
-      type: 'Earbuds',
-      duration: 4638 // 4.638s SMIL animation cycle
-    }
-  };
-
-  if (deviceTabs.length && deviceStage) {
-    let currentDeviceIndex = 0;
+  if (orbitContainer && orbitCards.length) {
+    let active = 0;
+    let startX = 0, lastX = 0, dragging = false, dragOffset = 0;
     let autoSwitchTimer = null;
     let isHovered = false;
 
-    function switchDevice(device, isManual = false) {
-      if (!device || !deviceData[device]) return;
-      currentDeviceIndex = deviceOrder.indexOf(device);
+    function renderOrbit() {
+      const mobile = window.innerWidth < 650;
+      const spacing = mobile ? 135 : 210;
 
-      // Update active tab button state
-      deviceTabs.forEach(btn => {
-        const isActive = btn.getAttribute('data-device') === device;
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      const yOffsets = {
+        mobile: 0,
+        tablet: 0,
+        buds: 0,
+        watch: 0
+      };
+
+      const reflScales = {
+        mobile: 1.1,
+        tablet: 1.1,
+        buds: 1.1,
+        watch: 1.1
+      };
+      
+      orbitCards.forEach((card, i) => {
+        let rel = i - active;
+        const half = orbitCards.length / 2;
+        if (rel > half) rel -= orbitCards.length;
+        if (rel < -half) rel += orbitCards.length;
+
+        const abs = Math.abs(rel);
+        const devType = card.getAttribute('data-device') || ['mobile', 'tablet', 'buds', 'watch'][i];
+        const groundY = yOffsets[devType] || 0;
+
+        let x = 0, z = 0, rotateY = 0, rotateZ = 0, rotateX = 0, scale = 1;
+        let opacity = 0, zIndex = 1, isInteractive = false;
+
+        if (abs === 0) {
+          // Center Active Device: 100% visible, sharp, heroic front & center
+          x = dragOffset * 0.42;
+          z = 90;
+          rotateY = -dragOffset * 0.09;
+          rotateZ = -dragOffset * 0.01;
+          rotateX = 0;
+          scale = 1.03;
+          opacity = 1;
+          zIndex = 25;
+          isInteractive = true;
+        } else if (abs === 1) {
+          // Adjacent devices: ready for transition, completely disappeared (opacity 0)
+          const dir = rel > 0 ? 1 : -1;
+          x = dir * spacing + dragOffset * 0.38;
+          z = -75;
+          rotateY = dir * -34 - dragOffset * 0.08;
+          rotateZ = dir * -1.5 - dragOffset * 0.01;
+          rotateX = 1.8;
+          scale = 0.82;
+          // During live pointer dragging, reveal the incoming device proportionally:
+          if (dragging && Math.abs(dragOffset) > 10) {
+            const dragProgress = Math.min(1, Math.abs(dragOffset) / (spacing * 0.75));
+            if ((dragOffset < 0 && dir > 0) || (dragOffset > 0 && dir < 0)) {
+              opacity = Math.min(0.9, dragProgress);
+            } else {
+              opacity = 0;
+            }
+          } else {
+            opacity = 0; // Disappeared when stationary
+          }
+          zIndex = 10;
+          isInteractive = false;
+        } else {
+          // Rear / opposite device: completely disappeared
+          x = dragOffset * 0.15;
+          z = -180;
+          rotateY = -dragOffset * 0.04;
+          rotateZ = 0;
+          rotateX = 3;
+          scale = 0.65;
+          opacity = 0;
+          zIndex = 1;
+          isInteractive = false;
+        }
+
+        const y = (abs === 0 ? -6 : abs * 8) + groundY;
+
+        card.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY.toFixed(1)}deg) rotateZ(${rotateZ.toFixed(2)}deg) scale(${scale})`;
+        card.style.zIndex = String(zIndex);
+        card.style.opacity = String(opacity);
+        card.style.filter = 'none';
+        card.style.pointerEvents = isInteractive ? 'auto' : 'none';
+        card.classList.toggle('is-active', abs === 0);
       });
 
-      // Update stage form-factor class
-      deviceStage.classList.remove('device-mobile', 'device-tablet', 'device-buds');
-      deviceStage.classList.add(`device-${device}`);
-
-      // Update active media panel with erase-in transition
-      const allMedia = deviceStage.querySelectorAll('.s-device-media');
-      allMedia.forEach(m => m.classList.remove('is-active'));
-      const targetMedia = document.getElementById(`media-${device}`);
-      if (targetMedia) {
-        void targetMedia.offsetWidth; // Force reflow to restart erase-in animation
-        targetMedia.classList.add('is-active');
-        const video = targetMedia.querySelector('video');
-        if (video) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
+      if (orbitCount) {
+        orbitCount.textContent = `${String(active + 1).padStart(2, '0')} / ${String(orbitCards.length).padStart(2, '0')}`;
+      }
+      
+      const activeDev = orbitCards[active]?.getAttribute('data-device') || 'mobile';
+      if (orbitReflection) {
+        orbitReflection.style.transform = `translateX(-50%) scaleX(${reflScales[activeDev] || 1})`;
       }
 
-      // Update device label badge with subtle fade
-      if (deviceTypeLabel) {
-        const pill = deviceTypeLabel.closest('.s-device-meta-pill') || deviceTypeLabel;
-        pill.style.opacity = '0';
-
-        setTimeout(() => {
-          deviceTypeLabel.textContent = deviceData[device].type;
-          pill.style.opacity = '1';
-        }, 150);
-      }
-
-      // Schedule next automatic switch after this animation completes its cycle
-      scheduleNextSwitch();
+      // Sync active tab state
+      deviceTabs.forEach((tab, idx) => {
+        const isSelected = idx === active;
+        tab.classList.toggle('active', isSelected);
+        tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      });
     }
 
-    function scheduleNextSwitch() {
+    function moveOrbit(step) {
+      active = (active + step + orbitCards.length) % orbitCards.length;
+      renderOrbit();
+      scheduleOrbitAutoSwitch();
+    }
+
+    function scheduleOrbitAutoSwitch() {
       clearTimeout(autoSwitchTimer);
-      if (isHovered) return; // Pause when user is inspecting
-
-      const currentDevice = deviceOrder[currentDeviceIndex];
-      const duration = deviceData[currentDevice]?.duration || 5500;
-
+      if (isHovered || dragging) return;
       autoSwitchTimer = setTimeout(() => {
-        const nextIndex = (currentDeviceIndex + 1) % deviceOrder.length;
-        switchDevice(deviceOrder[nextIndex]);
-      }, duration);
+        moveOrbit(1);
+      }, 5500);
     }
 
-    // Manual tab click handling
-    deviceTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const device = tab.getAttribute('data-device');
-        switchDevice(device, true);
+    // Prev / Next button listeners
+    if (orbitPrev) {
+      orbitPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        moveOrbit(-1);
+      });
+    }
+    if (orbitNext) {
+      orbitNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        moveOrbit(1);
+      });
+    }
+
+    // Clicking on cards to center them
+    orbitCards.forEach((card, i) => {
+      card.addEventListener('click', () => {
+        if (i !== active) {
+          let step = i - active;
+          const half = orbitCards.length / 2;
+          if (step > half) step -= orbitCards.length;
+          if (step < -half) step += orbitCards.length;
+          moveOrbit(step);
+        }
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          let step = i - active;
+          const half = orbitCards.length / 2;
+          if (step > half) step -= orbitCards.length;
+          if (step < -half) step += orbitCards.length;
+          moveOrbit(step);
+        }
       });
     });
 
-    // Pause on hover so the user can inspect, resume on leave
-    const projectorCard = document.querySelector('.s-device-projector-card');
+    // Device tabs click
+    deviceTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        if (idx !== active) {
+          let step = idx - active;
+          const half = orbitCards.length / 2;
+          if (step > half) step -= orbitCards.length;
+          if (step < -half) step += orbitCards.length;
+          moveOrbit(step);
+        }
+      });
+    });
+
+    // Pointer Drag / Swipe on the orbit container
+    orbitContainer.addEventListener('pointerdown', (e) => {
+      orbitContainer.classList.add('is-dragging');
+      startX = e.clientX;
+      lastX = startX;
+      dragOffset = 0;
+      dragging = true;
+      clearTimeout(autoSwitchTimer);
+      orbitContainer.setPointerCapture(e.pointerId);
+    });
+
+    orbitContainer.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const delta = e.clientX - lastX;
+      dragOffset += delta;
+      lastX = e.clientX;
+      renderOrbit();
+    });
+
+    orbitContainer.addEventListener('pointerup', (e) => {
+      if (!dragging) return;
+      orbitContainer.classList.remove('is-dragging');
+      const delta = e.clientX - startX;
+      dragging = false;
+      dragOffset = 0;
+      if (Math.abs(delta) > 35) {
+        moveOrbit(delta < 0 ? 1 : -1);
+      } else {
+        renderOrbit();
+      }
+      scheduleOrbitAutoSwitch();
+    });
+
+    orbitContainer.addEventListener('pointercancel', () => {
+      orbitContainer.classList.remove('is-dragging');
+      dragging = false;
+      dragOffset = 0;
+      renderOrbit();
+      scheduleOrbitAutoSwitch();
+    });
+
+    // Hover detection to pause auto-cycling
     if (projectorCard) {
       projectorCard.addEventListener('mouseenter', () => {
         isHovered = true;
@@ -263,11 +395,56 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       projectorCard.addEventListener('mouseleave', () => {
         isHovered = false;
-        scheduleNextSwitch();
+        scheduleOrbitAutoSwitch();
       });
     }
 
-    // Start auto-cycling initial timer
-    scheduleNextSwitch();
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.key === 'ArrowRight') moveOrbit(1);
+      if (e.key === 'ArrowLeft') moveOrbit(-1);
+    });
+
+    window.addEventListener('resize', renderOrbit);
+
+    // Initial render and timer
+    renderOrbit();
+    scheduleOrbitAutoSwitch();
+  } else {
+    // Fallback single-stage switcher for pages using legacy stage
+    const legacyDeviceStage = document.getElementById('panel-device');
+    const legacyTypeLabel = document.getElementById('deviceTypeLabel');
+    if (deviceTabs.length && legacyDeviceStage) {
+      const deviceOrder = ['mobile', 'tablet', 'buds', 'watch'];
+      let currentDeviceIndex = 0;
+      let autoSwitchTimer = null;
+
+      function switchLegacy(device) {
+        currentDeviceIndex = deviceOrder.indexOf(device);
+        deviceTabs.forEach(btn => {
+          const isActive = btn.getAttribute('data-device') === device;
+          btn.classList.toggle('active', isActive);
+        });
+        legacyDeviceStage.classList.remove('device-mobile', 'device-tablet', 'device-buds', 'device-watch');
+        legacyDeviceStage.classList.add(`device-${device}`);
+        const allMedia = legacyDeviceStage.querySelectorAll('.s-device-media');
+        allMedia.forEach(m => m.classList.remove('is-active'));
+        const targetMedia = document.getElementById(`media-${device}`);
+        if (targetMedia) {
+          void targetMedia.offsetWidth;
+          targetMedia.classList.add('is-active');
+        }
+        if (legacyTypeLabel) {
+          legacyTypeLabel.textContent = device.charAt(0).toUpperCase() + device.slice(1);
+        }
+      }
+
+      deviceTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          switchLegacy(tab.getAttribute('data-device'));
+        });
+      });
+    }
   }
 });

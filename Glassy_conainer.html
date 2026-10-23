@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism Container</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      /* Vibrant gradient background so the glass blur effect is clearly visible */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .glass-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      margin: 20px;
+      
+      /* The core glassmorphism effect */
+      background: rgba(255, 255, 255, 0.1); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* Safari support */
+      
+      /* Subtle border to create a crisp glass edge */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      
+      /* Soft drop shadow for depth */
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    }
+
+    .glass-header {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .glass-text {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .glass-button {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .glass-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .glass-button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-container">
+    <h2 class="glass-header">Frosted Glass</h2>
+    <p class="glass-text">
+      This container uses backdrop-filter to blur the vibrant gradient background behind it, creating a sleek, premium glassy UI element.
+    </p>
+    <a href="#" class="glass-button">Get Started</a>
+  </div>
+
+</body>
+</html>

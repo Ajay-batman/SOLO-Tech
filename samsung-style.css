@@ -500,14 +500,14 @@ ul {
   width: 100%;
 }
 
-/* ===== INTERACTIVE HERO DEVICE PROJECTOR (Mobile · Tablet · Buds) ===== */
+/* ===== INTERACTIVE HERO DEVICE PROJECTOR ===== */
 .s-device-projector-card {
   width: 100%;
-  max-width: 480px;
+  max-width: 540px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   position: relative;
   z-index: 3;
 }
@@ -566,46 +566,404 @@ ul {
   transform: scale(1.1);
 }
 
-/* Dynamic Projection Stage */
+/* ===== 3D ORBIT DEVICE SHOWCASE (Cyber Navy Frosted Glass Cards) ===== */
+.s-orbit-stage {
+  width: 100%;
+  height: 440px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.s-orbit-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+.s-orbit-container:active,
+.s-orbit-container.is-dragging {
+  cursor: grabbing;
+}
+
+.s-orbit-container.is-dragging .s-3d-card {
+  transition: none !important;
+}
+
+/* Individual 3D Device Card (Transparent Stage) */
+.s-3d-card {
+  position: absolute;
+  width: clamp(250px, 34vw, 305px);
+  height: 390px;
+  border-radius: 28px;
+  overflow: visible;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition: transform 750ms cubic-bezier(.2, .7, .15, 1), 
+              opacity 550ms cubic-bezier(.2, .7, .15, 1);
+  user-select: none;
+  cursor: default;
+}
+
+.s-3d-card.is-active {
+  cursor: default;
+}
+
+.s-3d-card:hover {
+  border-color: transparent;
+}
+
+/* 1. Mobile Device Image Scale */
+.s-card-mobile .s-card-device-img {
+  transform: scale(1.38);
+}
+.s-card-mobile:hover .s-card-device-img {
+  transform: scale(1.44);
+}
+
+/* 2. Tablet Device Image Scale */
+.s-card-tablet .s-card-device-img {
+  transform: scale(1.20);
+}
+.s-card-tablet:hover .s-card-device-img {
+  transform: scale(1.26);
+}
+
+/* 3. Earbuds Device Image Scale */
+.s-card-buds .s-card-device-img {
+  transform: scale(1.25);
+}
+.s-card-buds:hover .s-card-device-img {
+  transform: scale(1.32);
+}
+
+/* 4. Smartwatch Device Image Scale */
+.s-card-watch .s-card-device-img {
+  transform: scale(1.34);
+}
+.s-card-watch:hover .s-card-device-img {
+  transform: scale(1.40);
+}
+
+.s-card-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 14px;
+  overflow: visible;
+}
+
+.s-card-cover::before {
+  display: none;
+}
+
+.s-card-header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.s-card-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s-card-tag {
+  font-family: var(--s-font-head);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s-blue-primary);
+}
+
+.s-card-model {
+  font-family: var(--s-font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.s-card-edition {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+/* Card Visual Center with Transparent Device Image */
+.s-card-visual {
+  position: relative;
+  width: 100%;
+  height: 245px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+.s-card-device-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  filter: drop-shadow(0 20px 32px rgba(15, 23, 42, 0.22)) drop-shadow(0 6px 14px rgba(12, 102, 228, 0.12));
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+
+.s-card-glow-core {
+  display: none;
+}
+
+/* Card Footer / Specs */
+.s-card-footer {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.s-card-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s-card-spec-key {
+  font-family: var(--s-font-head);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.s-card-spec-val {
+  font-family: var(--s-font-head);
+  font-size: 11px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.s-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--s-font-head);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--s-blue-primary);
+  background: rgba(12, 102, 228, 0.08);
+  border: 1px solid rgba(12, 102, 228, 0.2);
+  padding: 3px 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.s-card-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--s-blue-primary);
+  box-shadow: 0 0 6px var(--s-blue-primary);
+  animation: sLiveDotPulse 1.6s ease-in-out infinite;
+}
+
+/* Ambient Soft Floor Reflection */
+.s-orbit-reflection {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: clamp(230px, 30vw, 290px);
+  height: 20px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(12, 102, 228, 0.22), rgba(56, 189, 248, 0.06) 45%, transparent 72%);
+  filter: blur(8px);
+  opacity: 0.9;
+  pointer-events: none;
+  transition: transform 900ms ease, opacity 700ms ease;
+  z-index: 1;
+}
+
+/* Orbit Navigation Controls */
+.s-orbit-controls-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.s-orbit-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.s-orbit-nav-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.s-orbit-nav-btn:hover {
+  background: var(--s-blue-primary);
+  border-color: var(--s-blue-primary);
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(12, 102, 228, 0.3);
+}
+
+.s-orbit-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.12em;
+  min-width: 58px;
+  justify-content: center;
+}
+
+.s-orbit-micro-hint {
+  font-family: var(--s-font-head);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-top: -4px;
+}
+
+/* ===== 3D FROSTED GLASS DEVICE CONTAINER (Equal 1:1 Aspect Ratio On All Sides) ===== */
+:root {
+  --s-glass-stage-bg: radial-gradient(circle at 50% 40%, rgba(15, 30, 65, 0.85) 0%, rgba(6, 14, 34, 0.94) 85%);
+  --s-glass-stage-border: rgba(255, 255, 255, 0.45);
+  --s-glass-stage-glow: rgba(12, 102, 228, 0.25);
+  --s-glass-stage-shadow: rgba(12, 102, 228, 0.32);
+  --s-glass-specular-top: rgba(255, 255, 255, 0.8);
+  --s-glass-specular-bottom: rgba(0, 0, 0, 0.45);
+}
+
 .s-device-stage {
   width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background: transparent;
+  border-radius: 32px;
+  overflow: hidden;
+  
+  /* Frosted Glass Core with Cyber Depth */
+  background: var(--s-glass-stage-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* 3D Beveled Crystal Glass Edges */
+  border: 1.5px solid var(--s-glass-stage-border);
+  box-shadow: 
+    /* Top-left specular 3D edge highlight */
+    inset 1.5px 1.5px 2px 0px var(--s-glass-specular-top),
+    inset 3px 3px 14px 0px rgba(255, 255, 255, 0.25),
+    /* Bottom-right shadow bevel */
+    inset -2px -2px 8px 0px var(--s-glass-specular-bottom),
+    inset -1px -1px 2px 0px rgba(56, 189, 248, 0.35),
+    /* Inner ambient frosted depth */
+    inset 0 0 32px 0px var(--s-glass-stage-glow),
+    /* Outer elevation shadow floating over the page */
+    0 26px 52px -12px var(--s-glass-stage-shadow),
+    0 12px 28px -6px rgba(0, 0, 0, 0.16),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  
   animation: sMobileCardFloat 5s ease-in-out infinite;
-  transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.35s ease, border-color 0.35s ease;
 }
 
-/* Form-Factor Sizing Proportions */
-.s-device-stage.device-mobile {
-  max-width: 380px;
+.s-device-stage:hover {
+  box-shadow: 
+    inset 1.5px 1.5px 2px 0px var(--s-glass-specular-top),
+    inset 3px 3px 16px 0px rgba(255, 255, 255, 0.35),
+    inset -2px -2px 10px 0px var(--s-glass-specular-bottom),
+    inset -1px -1px 2px 0px rgba(56, 189, 248, 0.45),
+    inset 0 0 36px 0px var(--s-glass-stage-glow),
+    0 30px 60px -10px var(--s-glass-stage-shadow),
+    0 14px 32px -6px rgba(0, 0, 0, 0.22),
+    0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.s-device-stage.device-tablet {
-  max-width: 480px;
-}
-
-.s-device-stage.device-buds {
-  max-width: 320px;
-}
-
-/* Inner SVG Stage Wrapper with proportional scaling */
+/* Equal 1:1 Viewport Stage on All Sides */
 .s-device-stage-inner {
   width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 250px;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  padding: 12px;
 }
 
-/* Individual Device Media Panels with Erase-In Animation */
+/* Individual Device Media Panels */
 .s-device-media {
   display: none;
   width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   align-items: center;
   justify-content: center;
   will-change: clip-path, opacity, transform;
@@ -620,84 +978,75 @@ ul {
 @keyframes sEraseIn {
   0% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0 round 8px);
+    clip-path: inset(0 100% 0 0 round 24px);
     transform: scale(0.96) translateX(12px);
-    filter: blur(4px);
+    filter: blur(6px);
   }
   30% {
     opacity: 0.8;
   }
   100% {
     opacity: 1;
-    clip-path: inset(0 0 0 0 round 8px);
+    clip-path: inset(0 0 0 0 round 24px);
     transform: scale(1) translateX(0);
     filter: blur(0);
   }
 }
 
-.s-buds-video {
-  mix-blend-mode: multiply;
-  max-height: 200px;
-  border-radius: 16px;
-}
-
-.s-device-stage.device-mobile .s-device-stage-inner {
-  transform: scale(1);
-}
-
-.s-device-stage.device-tablet .s-device-stage-inner {
-  transform: scale(1.06);
-}
-
-.s-device-stage.device-buds .s-device-stage-inner {
-  transform: scale(0.92);
-}
-
+/* Equal Aspect Ratio on All Sides (1:1) with Circular Feathered Edge Mask */
+.s-device-hero-img,
 .s-device-lottie-svg {
   width: 100%;
-  height: auto;
-  max-height: 250px;
+  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
+  object-position: center;
   display: block;
-  filter: drop-shadow(0 10px 24px rgba(12, 102, 228, 0.12));
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s ease;
+  
+  /* Symmetrical circular feather mask dissolving edges seamlessly on all sides */
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 42%, rgba(0, 0, 0, 0) 90%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 42%, rgba(0, 0, 0, 0) 90%);
+  
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.5));
+  transition: transform 0.4s ease;
 }
 
-.s-device-stage.device-tablet .s-device-lottie-svg {
-  max-height: 280px;
+.s-device-stage:hover .s-device-hero-img,
+.s-device-stage:hover .s-device-lottie-svg {
+  transform: scale(1.035);
 }
 
-.s-device-stage.device-buds .s-device-lottie-svg {
-  max-height: 205px;
-}
-
-.s-device-projector-card:hover .s-device-lottie-svg {
-  transform: scale(1.02);
-}
-
-/* Telemetry Badges below the device projection */
+/* Telemetry Badges anchored inside the device projection stage */
 .s-device-meta {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 6px;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .s-device-meta-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(12, 102, 228, 0.08);
-  border: 1px solid rgba(12, 102, 228, 0.18);
-  padding: 4px 10px;
+  background: rgba(12, 102, 228, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 12px;
   border-radius: 999px;
   font-family: var(--s-font-head);
   font-size: 11px;
   font-weight: 700;
-  color: var(--s-blue-primary);
-  letter-spacing: 0.02em;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: opacity 0.2s ease;
 }
 
@@ -705,8 +1054,8 @@ ul {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--s-blue-primary);
-  box-shadow: 0 0 8px var(--s-blue-primary);
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
   animation: sLiveDotPulse 1.6s ease-in-out infinite;
 }
 
@@ -727,6 +1076,231 @@ ul {
   color: var(--s-text-muted);
   letter-spacing: 0.02em;
   transition: opacity 0.2s ease;
+}
+
+/* ===== GLASS CONTAINER COLOR PICKER & CONTROLS ===== */
+.s-glass-controls {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(10, 18, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 10px 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+}
+
+.s-glass-controls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.s-glass-controls-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--s-font-head);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.s-glass-controls-title svg {
+  width: 14px;
+  height: 14px;
+  color: #38bdf8;
+  stroke: currentColor;
+}
+
+.s-glass-hex-tag {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+}
+
+.s-glass-swatches {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.s-swatch-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: var(--swatch-color);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.s-swatch-btn:hover {
+  transform: translateY(-2px) scale(1.12);
+  border-color: #ffffff;
+  box-shadow: 0 4px 12px var(--swatch-color);
+}
+
+.s-swatch-btn.active {
+  border-color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2.5px #38bdf8, 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.s-swatch-btn.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom Color Picker Swatch Button */
+.s-swatch-picker-label {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px dashed rgba(56, 189, 248, 0.55);
+  background: rgba(56, 189, 248, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.s-swatch-picker-label:hover {
+  transform: translateY(-2px) scale(1.12);
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+.s-swatch-picker-label.active {
+  border-style: solid;
+  border-color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2.5px #38bdf8, 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.s-swatch-color-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.s-swatch-picker-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.s-swatch-picker-icon svg {
+  width: 13px;
+  height: 13px;
+  color: #38bdf8;
+}
+
+/* Slider Row for Frost Opacity */
+.s-glass-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.s-glass-slider-label {
+  font-family: var(--s-font-head);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.s-glass-range {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.s-glass-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.s-glass-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.s-glass-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.s-glass-slider-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 /* Floating Subtle Breathing */
@@ -1956,14 +2530,53 @@ ul {
 }
 
 @media (max-width: 600px) {
+  .s-orbit-stage {
+    height: 360px;
+  }
+  .s-3d-card {
+    width: clamp(210px, 62vw, 250px);
+    height: 340px;
+    padding: 14px;
+    border-radius: 22px;
+  }
+  .s-card-visual {
+    height: 200px;
+  }
+  .s-card-mobile .s-card-device-img {
+    transform: scale(1.32);
+  }
+  .s-card-tablet .s-card-device-img {
+    transform: scale(1.15);
+  }
+  .s-card-buds .s-card-device-img {
+    transform: scale(1.20);
+  }
+  .s-card-watch .s-card-device-img {
+    transform: scale(1.26);
+  }
+  .s-card-device-img {
+    transform: scale(1.1);
+  }
+  .s-card-model {
+    font-size: 13px;
+  }
+  .s-card-spec-val {
+    font-size: 10px;
+  }
+  .s-orbit-reflection {
+    width: 200px;
+  }
+  .s-device-stage {
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    margin: 0 auto;
+  }
+  .s-device-hero-img,
   .s-device-lottie-svg {
-    max-height: 180px;
-  }
-  .s-device-stage.device-tablet .s-device-lottie-svg {
-    max-height: 200px;
-  }
-  .s-device-stage.device-buds .s-device-lottie-svg {
-    max-height: 155px;
+    max-height: none;
+    aspect-ratio: 1 / 1;
   }
 
   .s-cards-grid,
