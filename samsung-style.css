@@ -387,7 +387,7 @@ ul {
   position: relative;
   background: linear-gradient(180deg, #ffffff 0%, #f8f8fa 100%);
   color: var(--s-text-primary);
-  padding: 100px 0 90px;
+  padding: 48px 0 80px;
   overflow: hidden;
   border-bottom: 1px solid var(--s-border-light);
 }
@@ -406,7 +406,7 @@ ul {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 50px;
-  align-items: center;
+  align-items: start;
   position: relative;
   z-index: 2;
 }
@@ -2589,7 +2589,7 @@ ul {
   }
 
   .s-hero {
-    padding: 90px 0 70px;
+    padding: 40px 0 60px;
   }
 
   .s-banner-content,
