@@ -491,33 +491,33 @@ ul {
 
 /* Our Commitment to Quality Card (Fills Left Hero Space) */
 .s-commitment-card {
-  margin-top: 24px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 250, 254, 0.9) 100%);
-  border: 1px solid rgba(12, 102, 228, 0.14);
-  border-radius: 18px;
-  padding: 18px 22px;
-  box-shadow: 0 4px 20px rgba(12, 102, 228, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  margin-top: 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 250, 254, 0.92) 100%);
+  border: 1px solid rgba(12, 102, 228, 0.16);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 24px rgba(12, 102, 228, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .s-commitment-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(12, 102, 228, 0.08);
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(12, 102, 228, 0.1);
 }
 
 .s-commitment-star {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1;
 }
 
 .s-commitment-title {
   font-family: var(--s-font-head);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.01em;
@@ -528,15 +528,15 @@ ul {
 .s-commitment-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 26px;
 }
 
 .s-commitment-subtitle {
   font-family: var(--s-font-head);
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 800;
   color: var(--s-blue-primary);
-  margin: 0 0 8px 0;
+  margin: 0 0 11px 0;
   letter-spacing: 0.01em;
 }
 
@@ -546,15 +546,15 @@ ul {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .s-commitment-item {
-  font-size: 11.5px;
-  line-height: 1.5;
-  color: #475569;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #334155;
   position: relative;
-  padding-left: 14px;
+  padding-left: 16px;
 }
 
 .s-commitment-item::before {
@@ -564,7 +564,7 @@ ul {
   top: 0;
   color: var(--s-blue-primary);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4;
 }
 
@@ -574,9 +574,13 @@ ul {
 }
 
 @media (max-width: 680px) {
+  .s-commitment-card {
+    padding: 20px 18px;
+    margin-top: 22px;
+  }
   .s-commitment-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
   }
 }
 
